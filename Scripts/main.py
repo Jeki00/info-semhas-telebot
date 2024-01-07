@@ -2,10 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import telebot
+from env import os
 
-BOT_TOKEN = '6693190918:AAHW9186_U2TAp54xXSnnS54t-13Nb2pQJg'
 
-bot = telebot.TeleBot(BOT_TOKEN)
+
+bot = telebot.TeleBot(os.environ.get('BOT_TOKEN'))
 
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
@@ -41,12 +42,7 @@ def scrape(message):
             if ingfo:
                 for info in ingfo:
                     bot.reply_to(message, 
-                    f"""
-                        tanggal:{info[0]} 
-                    mahasiswa:{info[1]}
-                    jam: {info[2]} - {info[3]}
-                    tempat: {info[4]}
-                    """)
+                    f"{'Tanggal:':<12} {info[0]}\n{'Mahasiswa:':<12} {info[1]}\n{'Jam:':<12} {info[2]} - {info[3]} \n{'Tempat:':<12} {info[4]}")
             else:
                 bot.reply_to(message, "tidak ada semhas")
         else:
