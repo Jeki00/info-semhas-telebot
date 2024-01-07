@@ -1,4 +1,4 @@
 *
 !.gitignore
-!/Scripts/main.py
-!/Scripts/requirements.txt
+!*/Scripts/main.py
+!*/Scripts/requirements.txt
